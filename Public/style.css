@@ -1,0 +1,9 @@
+.que_card {
+    height: 10rem;
+    width: 20rem;
+    border-radius: 6px;
+    background-color: rgb(7, 7, 54);
+    color: rgba(255, 255, 255, 0.897);
+    font-family:'Courier New', Courier, monospace;
+    text-align: center;
+}
