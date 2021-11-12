@@ -1,7 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = process.env.port;
+const mongoose = require('mongoose');
+const port = process.env.PORT;
+
+// Creating connection to mongoDB
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('connected'));
+
 
 // Allowing express to serve static html + css files
 app.use('/static', express.static('../Public'));
