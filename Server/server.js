@@ -1,14 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = process.env.port;
+
+// Allowing express to serve static html + css files
+app.use('/static', express.static('../Public'));
 
 app.get('/', (req, res) => {
-    res.send('Hello world');
+    // Direct user to index page
+    res.redirect(`http://localhost:${port}/static/index.html`);
 });
 
-app.get('/:id', (req, res) => {
-    res.send(`Hello ${req.params.id}`);
-});
 
 app.listen(port, (err) => {
     if (err) {
