@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const port = process.env.PORT;
 const Card = require('../models/card');
 
+
 // Creating connection to mongoDB
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING, { useNewUrlParser: true });
 const db = mongoose.connection;
@@ -16,6 +17,7 @@ db.once('open', () => console.log('connected'));
 app.use('/static', express.static('../Public'));
 app.use(express.urlencoded({ extended: false }));
 
+
 // displaying index page when users are on root page
 app.get('/', (req, res) => {
     // Direct user to index page
@@ -23,14 +25,18 @@ app.get('/', (req, res) => {
 });
 
 
+app.get('/all', async (req, res) => {
+    try {
+        const cards = await Card.find();
+        console.log(JSON.stringify(cards));
+    } catch (err) {
+        console.error(err);
+    }
+});
 
 
 app.post('/post-feedback', async (req, res) => {
-    //console.log(JSON.stringify(req.body));
-    //res.send('Data received.');
-
-    // actually saving to database
-    // firsts - creating new Card object
+    // Saving to database
     const card = new Card({
         question: req.body.question,
         answer: req.body.answer
@@ -43,9 +49,6 @@ app.post('/post-feedback', async (req, res) => {
         console.error(err);
     }
 });
-
-
-
 
 
 app.listen(port, (err) => {
