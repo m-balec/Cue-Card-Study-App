@@ -13,11 +13,24 @@ db.once('open', () => console.log('connected'));
 
 // Allowing express to serve static html + css files
 app.use('/static', express.static('../Public'));
+app.use(express.urlencoded({ extended: false }));
 
+// displaying index page when users are on root page
 app.get('/', (req, res) => {
     // Direct user to index page
     res.redirect(`http://localhost:${port}/static/index.html`);
 });
+
+
+
+
+app.post('/post-feedback', (req, res) => {
+    console.log(JSON.stringify(req.body));
+    res.send('Data received.');
+});
+
+
+
 
 
 app.listen(port, (err) => {
