@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const port = process.env.PORT;
+const Card = require('../models/card');
 
 // Creating connection to mongoDB
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING, { useNewUrlParser: true });
@@ -24,9 +25,23 @@ app.get('/', (req, res) => {
 
 
 
-app.post('/post-feedback', (req, res) => {
-    console.log(JSON.stringify(req.body));
-    res.send('Data received.');
+app.post('/post-feedback', async (req, res) => {
+    //console.log(JSON.stringify(req.body));
+    //res.send('Data received.');
+
+    // actually saving to database
+    // firsts - creating new Card object
+    const card = new Card({
+        question: req.body.question,
+        answer: req.body.answer
+    });
+
+    try {
+        await card.save();
+        console.log('Saved successfully');
+    } catch (err) {
+        console.error(err);
+    }
 });
 
 
