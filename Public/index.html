@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cue Cards</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="cue_card">
-        <h3 id="question">QUESTION</h3>
-        <h3 id="answer">ANSWER</h3>
+<body onload="getCueCards()">
+
+    <h1>Cue Cards</h1>
+
+    <!-- Button to bring user to the Create page for cue cards -->
+    <button onclick="location.href = 'create.html';">Create</button>
+
+    <div id="card_container">
+        <!-- EMPTY CONTAINER FOR JS FUNCTION TO STORE ALL CUE CARDS ON PAGE LOAD -->
     </div>
 
-    <button onclick="location.href = 'create.html';">Create</button>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -14,21 +14,16 @@ db.once('open', () => console.log('connected'));
 
 
 // Allowing express to serve static html + css files
-app.use('/static', express.static('../Public'));
+app.use('/', express.static('../Public'));
 app.use(express.urlencoded({ extended: false }));
 
 
-// displaying index page when users are on root page
-app.get('/', (req, res) => {
-    // Direct user to index page
-    res.redirect(`http://localhost:${port}/static/index.html`);
-});
-
-
-app.get('/all', async (req, res) => {
+// Getting all cards saved in database
+app.get('/cards', async (req, res) => {
     try {
         const cards = await Card.find();
         console.log(JSON.stringify(cards));
+        res.send(cards);
     } catch (err) {
         console.error(err);
     }
