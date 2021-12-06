@@ -13,8 +13,12 @@
 
     <!-- Button to bring user to the Create page for cue cards -->
     <button onclick="location.href = 'create.html';">Create</button>
+    <button onclick="deleteCard()">Delete</button>
 
-    <div id="card_container">
+    <label for="questionSearch">Question: </label>
+    <input type="search" id="questionSearch">
+
+    <div id="cardContainer">
         <!-- EMPTY CONTAINER FOR JS FUNCTION TO STORE ALL CUE CARDS ON PAGE LOAD -->
     </div>
 

@@ -46,6 +46,34 @@ app.post('/post-feedback', async (req, res) => {
 });
 
 
+app.delete('/:id', getCard, async (req, res) => {
+    try {
+        //await Card.remove(res.card);
+        await Card.deleteOne(res.card);
+        console.log('Deleted successfully');
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+
+
+// Middleware to find an individual card from id
+async function getCard(req, res, next) {
+    let card;
+    try {
+        card = await Card.findById(req.params.id);
+    } catch (err) {
+        console.log(err);
+    }
+
+    res.card = card;
+    next();
+}
+
+
+
+
 app.listen(port, (err) => {
     if (err) {
         console.error(err);
