@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cue Cards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Cue Cards</h1>
+
+    <!-- Button to bring user to the Create page for cue cards -->
+    <!--<button onclick="location.href = 'create.html';">Create</button> -->
+
+    <div class="cardContainer">
+        <% cards.forEach(function(card) { %>
+            <div class="cueCard">
+                <div id="question"> <%= card.question %> </div>
+                <div id="answer"> <%= card.answer %> </div>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
