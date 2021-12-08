@@ -1,3 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+.cardContainer {
+    display: grid;
+    max-width: 300px;
+    margin: 0 auto;
+    grid-gap: 1rem;
+}
+@media (min-width: 700px) {
+    .cardContainer { 
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+    }
+}
+@media (min-width: 1000px) {
+    .cardContainer {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+    }
+}
+
 .cueCard {
     height: 10rem;
     width: 20rem;
