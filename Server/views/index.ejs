@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cue Cards</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,8 +12,9 @@
     <h1>Cue Cards</h1>
 
     <!-- Button to bring user to the Create page for cue cards -->
-    <!--<button onclick="location.href = 'create.html';">Create</button> -->
+    <button onclick="location.href = 'create.html';">Create</button>
 
+    <!--
     <div class="cardContainer">
         <% cards.forEach(function(card) { %>
             <div class="cueCard">
@@ -21,5 +23,30 @@
             </div>
         <% }); %>
     </div>
+-->
+
+
+    <div class="cardContainer">
+        <% cards.forEach(function(card) { %>
+            <div class="cue-card">
+                <div class="cue-card-inner">
+                    <div class="cue-card-front">
+                        <h3 id="type">Question:</h3>
+                        <%= card.question %>
+                        <h6 id="course">CP330</h6>
+                    </div>
+                    <div class="cue-card-back">
+                        <h3 id="type">Answer:</h3>
+                        <%= card.answer %>
+                        <h6 id="course">CP390</h6>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+
+
+    <script src="script.js"></script>
 </body>
 </html>
