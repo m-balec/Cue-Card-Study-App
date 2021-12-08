@@ -12,10 +12,23 @@ const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('connected'));
 
+// Setting view engine to ejs
+app.set('view engine', 'ejs');
 
 // Allowing express to serve static html + css files
 app.use('/', express.static('../Public'));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+
+
+//EJS TEST
+app.get('/', async (req, res) => {
+    const cards = await Card.find();
+
+    res.render('../views/index.ejs', {
+        cards: cards
+    });
+});
+
 
 
 // Getting all cards saved in database
@@ -39,7 +52,9 @@ app.post('/post-feedback', async (req, res) => {
 
     try {
         await card.save();
-        console.log('Saved successfully');
+        console.log('Saved Successfully');
+        //res.redirect('/create.html');
+        res.redirect('back');
     } catch (err) {
         console.error(err);
     }
@@ -51,8 +66,9 @@ app.delete('/:id', getCard, async (req, res) => {
         //await Card.remove(res.card);
         await Card.deleteOne(res.card);
         console.log('Deleted successfully');
+        res.redirect('back'); //page will NOT refresh
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
 })
 
@@ -64,7 +80,7 @@ async function getCard(req, res, next) {
     try {
         card = await Card.findById(req.params.id);
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
 
     res.card = card;
