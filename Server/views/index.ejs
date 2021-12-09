@@ -20,17 +20,22 @@
             <div class="cue-card">
                 <div class="cue-card-inner">
                     <div class="cue-card-front">
-                        <h3 id="type">Question:</h3>
+                        <h3 class="type">Question:</h3>
                         <%= card.question %>
-                        <h6 id="course">CP330</h6>
+                        <h6 class="course">CP330</h6>
                     </div>
                     <div class="cue-card-back">
-                        <h3 id="type">Answer:</h3>
+                        <h3 class="type">Answer:</h3>
                         <%= card.answer %>
-                        <h6 id="course">CP390</h6>
-                        <form action="/delete/<%= card._id %>" method="get">
-                            <button type="submit">Delete</button>
-                        </form>
+                        <h6 class="course">CP390</h6>
+                        <div class="cardActions">
+                            <form action="/delete/<%= card._id %>" method="get">
+                                <button type="submit" class="cardActionButton">Delete</button>
+                            </form>
+                            <form action="/edit/<%= card._id %>" method="get">
+                                <button type="submit" class="cardActionButton">Edit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
