@@ -14,17 +14,6 @@
     <!-- Button to bring user to the Create page for cue cards -->
     <button onclick="location.href = 'create.html';">Create</button>
 
-    <!--
-    <div class="cardContainer">
-        <% cards.forEach(function(card) { %>
-            <div class="cueCard">
-                <div id="question"> <%= card.question %> </div>
-                <div id="answer"> <%= card.answer %> </div>
-            </div>
-        <% }); %>
-    </div>
--->
-
 
     <div class="cardContainer">
         <% cards.forEach(function(card) { %>
@@ -39,14 +28,13 @@
                         <h3 id="type">Answer:</h3>
                         <%= card.answer %>
                         <h6 id="course">CP390</h6>
+                        <form action="/delete/<%= card._id %>" method="get">
+                            <button type="submit">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>
         <% }); %>
     </div>
-
-
-
-    <script src="script.js"></script>
 </body>
 </html>
