@@ -75,6 +75,27 @@ app.get('/delete/:id', async (req, res) => {
 });
 
 
+// UPDATE
+app
+    .route('/edit/:id')
+    .get( async (req, res) => {
+        try {
+            const card = await Card.findById(req.params.id);
+            console.log('Record found');
+            res.render('edit.ejs', { card: card });
+        } catch (err) {
+            console.error(err);
+        }
+    })
+    .post((req, res) => {
+        const id = req.params.id;
+        Card.findByIdAndUpdate(id, { question: req.body.question, answer: req.body.answer }, err => {
+            if (err) return res.send(500, err);
+            res.redirect('/');
+        });
+});
+
+
 
 app.listen(port, (err) => {
     if (err) {
