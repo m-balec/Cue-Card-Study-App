@@ -20,15 +20,15 @@ app.use('/', express.static('../Public'));
 app.use(express.urlencoded({ extended: true }));
 
 
-//EJS TEST
+// INDEX
 app.get('/', async (req, res) => {
+    // Getting all cards from database
     const cards = await Card.find();
 
-    res.render('../views/index.ejs', {
-        cards: cards
-    });
+    // Display index.ejs file and pass to it the array of Card objects
+    // This allows for easy dynamic rendering of these items on the front end
+    res.render('../views/index.ejs', { cards: cards });
 });
-
 
 
 // Getting all cards saved in database
@@ -43,6 +43,7 @@ app.get('/cards', async (req, res) => {
 });
 
 
+// CREATE
 app.post('/post-feedback', async (req, res) => {
     // Saving to database
     const card = new Card({
@@ -61,32 +62,17 @@ app.post('/post-feedback', async (req, res) => {
 });
 
 
-app.delete('/:id', getCard, async (req, res) => {
+// DELETE - using get since html does not support making delete requests from in browser
+app.get('/delete/:id', async (req, res) => {
     try {
-        //await Card.remove(res.card);
-        await Card.deleteOne(res.card);
+        // Removing card by id
+        await Card.findByIdAndDelete(req.params.id);
         console.log('Deleted successfully');
         res.redirect('back'); //page will NOT refresh
     } catch (err) {
         console.error(err);
     }
-})
-
-
-
-// Middleware to find an individual card from id
-async function getCard(req, res, next) {
-    let card;
-    try {
-        card = await Card.findById(req.params.id);
-    } catch (err) {
-        console.error(err);
-    }
-
-    res.card = card;
-    next();
-}
-
+});
 
 
 
