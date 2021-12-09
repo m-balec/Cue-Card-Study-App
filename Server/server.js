@@ -31,20 +31,13 @@ app.get('/', async (req, res) => {
 });
 
 
-// Getting all cards saved in database
-app.get('/cards', async (req, res) => {
-    try {
-        const cards = await Card.find();
-        console.log(JSON.stringify(cards));
-        res.send(cards);
-    } catch (err) {
-        console.error(err);
-    }
-});
-
-
 // CREATE
-app.post('/post-feedback', async (req, res) => {
+app
+    .route('/create')
+    .get( async (req, res) => {
+    res.render('create.ejs');
+    })
+    .post( async (req, res) => {
     // Saving to database
     const card = new Card({
         question: req.body.question,
@@ -55,7 +48,7 @@ app.post('/post-feedback', async (req, res) => {
         await card.save();
         console.log('Saved Successfully');
         //res.redirect('/create.html');
-        res.redirect('back');
+        res.redirect('/');
     } catch (err) {
         console.error(err);
     }
@@ -90,7 +83,7 @@ app
     .post((req, res) => {
         const id = req.params.id;
         Card.findByIdAndUpdate(id, { question: req.body.question, answer: req.body.answer }, err => {
-            if (err) return res.send(500, err);
+            if (err) return console.error(err);
             res.redirect('/');
         });
 });
