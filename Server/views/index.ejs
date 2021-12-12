@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cue Cards</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Cue Cards</h1>
+    <header class="indexHeader">
+        <div class="headerContainer">
+            <h1>Cue Cards</h1>
+            <!-- Button to bring user to the Create page for cue cards -->
+            <button class="button" onclick="location.href = 'create';">New Card <i class="fa fa-plus fa-md"></i></button>
 
-    <!-- Button to bring user to the Create page for cue cards -->
-    <button onclick="location.href = 'create';">Create</button>
-
+        </div>
+        
+    </header>
 
     <div class="cardContainer">
         <% cards.forEach(function(card) { %>
@@ -27,13 +32,13 @@
                     <div class="cue-card-back">
                         <h3 class="type">Answer:</h3>
                         <%= card.answer %>
-                        <h6 class="course">CP390</h6>
+                        <h6 class="course">CP330</h6>
                         <div class="cardActions">
-                            <form action="/delete/<%= card._id %>" method="get">
-                                <button type="submit" class="cardActionButton">Delete</button>
-                            </form>
                             <form action="/edit/<%= card._id %>" method="get">
-                                <button type="submit" class="cardActionButton">Edit</button>
+                                <button type="submit" class="cardActionButton" ><i class="fa fa-pencil"></i></button>
+                            </form>
+                            <form action="/delete/<%= card._id %>" method="get">
+                                <button type="submit" class="cardActionButton"><i class="fa fa-trash"></i></button>
                             </form>
                         </div>
                     </div>
