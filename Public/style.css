@@ -5,7 +5,7 @@
 
 .cardContainer {
     display: grid;
-    max-width: 300px;
+    max-width: 250px;
     margin: 0 auto;
     grid-gap: 1rem;
 }
@@ -18,7 +18,7 @@
 
 .headerContainer {
     color: rgb(0, 0, 0);
-    width: 300px;
+    width: 250px;
     justify-self: center;
     justify-content: left;
 }
@@ -43,10 +43,10 @@
 @media (min-width: 700px) {
     .cardContainer { 
         grid-template-columns: repeat(2, 1fr);
-        max-width: 600px;
+        max-width: 550px;
     }
     .headerContainer {
-        width: 600px;
+        width: 550px;
         display: flex;
         align-items: center;
     }
