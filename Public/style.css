@@ -23,6 +23,8 @@
     justify-content: left;
 }
 
+
+
 .button {
     background-color: rgb(49, 73, 255);
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.344);
@@ -31,8 +33,11 @@
     height: 2rem;
     border: none;
     border-radius: 6px;
-    margin: 0 0 2rem 0;
     transition-duration: 200ms;
+}
+
+.addButton {
+    margin: 0 0 2rem 0;
 }
 
 .button:hover {
@@ -50,7 +55,7 @@
         display: flex;
         align-items: center;
     }
-    .button {
+    .addButton {
         margin: 0 0 0 2rem;
     }
 }
@@ -64,7 +69,7 @@
         display: flex;
         align-items: center;
     }
-    .button {
+    .addButton {
         margin: 0 0 0 2rem;
     }
 }
@@ -154,4 +159,69 @@
 
 .cardActionButton:hover {
     cursor: pointer;
+}
+
+
+/*
+CREATE/EDIT PAGE
+*/
+
+.createButton {
+    margin: 0.5rem 0.5rem 0 0;
+}
+
+.cancelButton {
+    background-color: transparent;
+    border: 1px solid rgb(49, 73, 255);
+    color: rgb(49, 73, 255);
+}
+
+.cancelButton:hover {
+    background-color: rgb(151, 163, 255);
+}
+
+.createContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.pageHeading {
+    color: rgb(0, 0, 0);
+    width: 250px;
+    justify-self: center;
+    justify-content: left;
+}
+
+#questionInput, #answerInput {
+    border-radius: 6px;
+    width: 100%;
+    padding: 0.5rem;
+}
+#answerInput {
+    height: 10rem;
+}
+
+@media (min-width: 700px) {
+    .pageHeading {
+        width: 550px;
+    }
+    #questionInput, #answerInput {
+        background-color: rgba(0, 0, 0, 0.041);
+        width: 30rem;
+    }
+    #answerInput {
+        height: 10rem;
+    }
+}
+@media (min-width: 1000px) {
+    .pageHeading {
+        width: 900px;
+    }
+    #questionInput, #answerInput {
+        width: 40rem;
+    }
+    #answerInput {
+        height: 10rem;
+    }
 }

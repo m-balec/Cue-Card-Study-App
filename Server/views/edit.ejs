@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <form method="POST" action="/edit/<%= card._id %>">
-        <label>Question / Concept:<input type="text" name="question" value="<%= card.question %>" required></label></br>
-        <label>Answer / Definition:<input type="text" name="answer" value="<%= card.answer %>" required></label></br>
-        <button type="submit" value="Update">Update</button>
-    </form>
-    <button onclick="location.href = '/';">Cancel</button>
+
+    <div class="createContainer">
+        <div class="createPageContent">
+            <h1 class="pageHeading">Edit</h1>
+
+            <form method="POST" action="/edit/<%= card._id %>">
+                <div class="inputs">
+                    <textarea name="question" id="questionInput" required><%= card.question %></textarea></br>
+                    <textarea name="answer" id="answerInput" required><%= card.answer %></textarea></</br>
+                </div>
+                <button class="button createButton" type="submit">Update</button>
+                <button class="button cancelButton" onclick="location.href = '/';">Cancel</button>
+            </form>
+
+        </div>
+    </div>
 </body>
 </html>
