@@ -27,7 +27,7 @@ app.get('/', async (req, res) => {
 
     // Display index.ejs file and pass to it the array of Card objects
     // This allows for easy dynamic rendering of these items on the front end
-    res.render('../views/index.ejs', { cards: cards });
+    res.render('index.ejs', { cards: cards });
 });
 
 
@@ -41,7 +41,8 @@ app
     // Saving to database
     const card = new Card({
         question: req.body.question,
-        answer: req.body.answer
+        answer: req.body.answer,
+        subject: req.body.subject
     });
 
     try {
@@ -61,7 +62,7 @@ app.get('/delete/:id', async (req, res) => {
         // Removing card by id
         await Card.findByIdAndDelete(req.params.id);
         console.log('Deleted successfully');
-        res.redirect('back'); //page will NOT refresh
+        res.redirect('back');
     } catch (err) {
         console.error(err);
     }
@@ -82,7 +83,7 @@ app
     })
     .post((req, res) => {
         const id = req.params.id;
-        Card.findByIdAndUpdate(id, { question: req.body.question, answer: req.body.answer }, err => {
+        Card.findByIdAndUpdate(id, { question: req.body.question, answer: req.body.answer, subject: req.body.subject }, err => {
             if (err) return console.error(err);
             res.redirect('/');
         });
