@@ -14,7 +14,7 @@
         <div class="headerContainer">
             <h1>Cue Cards</h1>
             <!-- Button to bring user to the Create page for cue cards -->
-            <button class="button" onclick="location.href = 'create';">New Card <i class="fa fa-plus fa-md"></i></button>
+            <button class="button addButton" onclick="location.href = 'create';">New Card <i class="fa fa-plus fa-md"></i></button>
 
         </div>
         
@@ -27,12 +27,16 @@
                     <div class="cue-card-front">
                         <h3 class="type">Question:</h3>
                         <%= card.question %>
-                        <h6 class="course">CP330</h6>
+                        <h6 class="course">
+                            <%= card.subject %>
+                        </h6>
                     </div>
                     <div class="cue-card-back">
                         <h3 class="type">Answer:</h3>
                         <%= card.answer %>
-                        <h6 class="course">CP330</h6>
+                        <h6 class="course">
+                            <%= card.subject %>
+                        </h6>
                         <div class="cardActions">
                             <form action="/edit/<%= card._id %>" method="get">
                                 <button type="submit" class="cardActionButton" ><i class="fa fa-pencil"></i></button>
