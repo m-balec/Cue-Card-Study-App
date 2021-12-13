@@ -10,6 +10,10 @@ const cardSchema = new mongoose.Schema({
     answer: {
         type: String,
         required: true
+    },
+    subject: {
+        type: String,
+        required: false
     }
 });
 
