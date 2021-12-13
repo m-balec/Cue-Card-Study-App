@@ -8,14 +8,15 @@
 </head>
 <body>
 
-    <div class="createContainer">
+    <div class="container">
         <div class="createPageContent">
             <h1 class="pageHeading">Edit</h1>
 
             <form method="POST" action="/edit/<%= card._id %>">
                 <div class="inputs">
-                    <textarea name="question" id="questionInput" required><%= card.question %></textarea></br>
-                    <textarea name="answer" id="answerInput" required><%= card.answer %></textarea></</br>
+                    <textarea name="question" id="questionInput" placeholder="Question" required><%= card.question %></textarea></br>
+                    <textarea name="answer" id="answerInput" placeholder="Answer" required><%= card.answer %></textarea></</br>
+                    <textarea name="subject" id="subjectInput" placeholder="Subject (optional)" rows="1"><%= card.subject %></textarea></</br>
                 </div>
                 <button class="button createButton" type="submit">Update</button>
                 <button class="button cancelButton" onclick="location.href = '/';">Cancel</button>
